@@ -8,6 +8,7 @@ const { config } = require('../config/envConfig');
  * Database URI from env
  */
 const DB_URL = `${config.dbURL}/${config.dbName}`;
+
 /**
  * Database connection
  */
