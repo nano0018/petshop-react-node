@@ -3,14 +3,21 @@
  */
 const boom = require('@hapi/boom');
 
-class CrudRepository {
+/**
+ * Object for simple CRUD operations.
+ */
+class CrudService {
+  async create(model, data) {
+    const newData = await model.create({ ...data });
+    return newData;
+  }
   async find(model) {
     const data = await model.find();
     return data;
   }
 
-  async findByField(model, field) {
-    const data = await model.findOne({ field });
+  async findById(model, id) {
+    const data = await model.findById(id);
     if (!data) {
       throw boom.notFound('Not found!');
     }
@@ -18,9 +25,9 @@ class CrudRepository {
   }
 
   async update(model, id, changes) {
+    await model.findByIdAndUpdate(id, changes);
     const data = await model.findById(id);
-    const updates = await model.findByIdAndUpdate(id, { ...data, ...changes });
-    return updates;
+    return data;
   }
 
   async delete(model, id) {
@@ -29,4 +36,4 @@ class CrudRepository {
   }
 }
 
-module.exports = { CrudRepository };
+module.exports = { CrudService };

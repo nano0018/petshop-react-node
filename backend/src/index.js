@@ -9,6 +9,7 @@
  */
 const express = require('express');
 const cors = require('cors');
+const routerAPI = require('./routes/index.routes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FRONTEND_URL = process.env.FRONTEND_URL || `http://localhost:${PORT}`;
@@ -39,6 +40,8 @@ app.use(cors(options));
 app.get('/api', (req, res) => {
   res.send('Prueba express');
 });
+
+routerAPI(app);
 
 /**
  * App start

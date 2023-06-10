@@ -6,7 +6,7 @@ const Joi = require('joi');
 /**
  * Joi validation types for user schema.
  */
-const id = Joi.string().uuid();
+const id = Joi.string().regex(/^[a-zA-Z0-9 ]*$/);
 const name = Joi.string().min(3).max(15);
 const lastName = Joi.string().min(3).max(15);
 const email = Joi.string().email();
@@ -28,10 +28,10 @@ const createUserSchema = Joi.object({
  * Joi validation for update user data.
  */
 const updateUserSchema = Joi.object({
-  email: email.required(),
-  password: password.required(),
-  name: name.required(),
-  lastName: lastName.required(),
+  email: email,
+  password: password,
+  name: name,
+  lastName: lastName,
   role: role,
 });
 
