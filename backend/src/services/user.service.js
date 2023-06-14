@@ -23,6 +23,14 @@ class UserService extends CrudService {
     const { password, ...resultUserObject } = newData._doc;
     return resultUserObject;
   }
+
+  async findByEmail(email) {
+    const user = await model.findOne({ email: email }).select('+password');
+    if (user === null) {
+      throw boom.notFound('The email is not registered!');
+    }
+    return user;
+  }
 }
 
 module.exports = UserService;

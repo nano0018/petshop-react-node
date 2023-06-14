@@ -13,7 +13,7 @@ const UserSchema = new Schema(
     lastName: { type: String, requires: true },
     email: { type: String, requires: true },
     password: { type: String, requires: true, select: false },
-    recoveryToken: { type: String, requires: false },
+    recoveryToken: { type: String, requires: false, select: false },
     role: { type: String, requires: true , default: 'customer'},
   },
   {

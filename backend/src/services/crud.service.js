@@ -4,7 +4,7 @@
 const boom = require('@hapi/boom');
 
 /**
- * Object for simple CRUD operations.
+ * Class for simple CRUD operations.
  */
 class CrudService {
   async create(model, data) {

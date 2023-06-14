@@ -35,6 +35,11 @@ const options = {
 app.use(cors(options));
 
 /**
+ * Passport middleware
+ */
+require('./utils/auth/auth.util');
+
+/**
  * Test endpoint
  */
 app.get('/api', (req, res) => {
