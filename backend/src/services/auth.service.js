@@ -28,12 +28,12 @@ class AuthService {
       sub: user.id,
       role: user.role,
     };
-    const token = jwt.sign(payload, config.jwtKey);
+    const token = jwt.sign(payload, config.jwtKey, { expiresIn: 3600000 });
     const userData = {
       name: user.name,
       lastName: user.lastName,
       email: user.email,
-    }
+    };
     return {
       user: userData,
       token,

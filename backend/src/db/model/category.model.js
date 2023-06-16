@@ -5,13 +5,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 /**
- * Mongoose schema for users
+ * Mongoose schema for product categories
  */
 const CategorySchema = new Schema(
   {
     name: { type: String, requires: true },
     img: { type: String, requires: true },
-    email: { type: String, requires: true },
   },
   {
     versionKey: false,
@@ -20,4 +19,6 @@ const CategorySchema = new Schema(
   { versionKey: false }
 );
 
-module.exports = mongoose.model('Category', CategorySchema);
+const category = mongoose.model('Category', CategorySchema);
+
+module.exports = category;

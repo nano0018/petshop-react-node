@@ -10,6 +10,7 @@
 const express = require('express');
 const cors = require('cors');
 const routerAPI = require('./routes/index.routes');
+const { logErrors, boomErrorHandler, errorHandler } = require('./middlewares/error.handler');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FRONTEND_URL = process.env.FRONTEND_URL || `http://localhost:${PORT}`;
@@ -46,6 +47,16 @@ app.get('/api', (req, res) => {
   res.send('Prueba express');
 });
 
+/**
+ * Error handlers middlewares
+ */
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);
+
+/**
+ * API endpoint routes
+ */
 routerAPI(app);
 
 /**

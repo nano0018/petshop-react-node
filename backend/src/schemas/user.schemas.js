@@ -21,7 +21,18 @@ const createUserSchema = Joi.object({
   password: password.required(),
   name: name.required(),
   lastName: lastName.required(),
-  role: role,
+  role: role.invalid('admin', 'employee'),
+});
+
+/**
+ * Joi validation for employee creation.
+ */
+const createEmployeeSchema = Joi.object({
+  email: email.required(),
+  password: password.required(),
+  name: name.required(),
+  lastName: lastName.required(),
+  role: role.required(),
 });
 
 /**
@@ -42,4 +53,4 @@ const getUserSchema = Joi.object({
   id: id.required(),
 });
 
-module.exports = { createUserSchema, getUserSchema, updateUserSchema };
+module.exports = { createUserSchema, getUserSchema, updateUserSchema, createEmployeeSchema };

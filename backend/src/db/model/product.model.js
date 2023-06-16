@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 /**
@@ -10,11 +10,11 @@ const { Schema } = mongoose;
 const ProductSchema = new Schema(
   {
     name: { type: String, requires: true, max: 64 },
-    category: { type: String, requires: true, max: 30 },
+    category: { type: Schema.Types.ObjectId },
     stock: { type: Number, requires: true, min: 1 },
     price: { type: Number, requires: true },
     description: { type: String, requires: true, max: 125 },
-    img: {type: String, requires: true, }
+    img: { type: String, requires: true },
   },
   {
     versionKey: false,
@@ -23,4 +23,6 @@ const ProductSchema = new Schema(
   { versionKey: false }
 );
 
-module.exports = mongoose.model("Product", ProductSchema);
+const product = mongoose.model('Product', ProductSchema);
+
+module.exports = product;
