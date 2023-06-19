@@ -10,20 +10,16 @@ const { Schema } = mongoose;
 const OrderSchema = new Schema(
   {
     userId: {
-      type: Schema.Types.UUID,
+      type: Schema.Types.ObjectId,
       required: true,
     },
     orderedProducts: [
       {
         _id: false,
-        idProduct: { type: String, requires: true },
-        nameProduct: { type: String, requires: true },
-        categoryProduct: { type: String, requires: true },
+        productId: { type: Schema.Types.ObjectId, requires: true },
         qtyOrderedProduct: { type: Number, requires: true },
-        priceProductPerUnit: { type: Number, requires: true },
       },
     ],
-    total: { type: Number, requires: true },
   },
 
   {
@@ -32,5 +28,13 @@ const OrderSchema = new Schema(
 
   { versionKey: false }
 );
+
+OrderSchema.virtual('totalPrice').get(function () {
+  return this.orderedProducts.reduce(
+    (total, product) =>
+      product.qtyOrderedProduct * product.idProduct.price + total,
+    0
+  );
+});
 
 module.exports = mongoose.model('Orders', OrderSchema);
