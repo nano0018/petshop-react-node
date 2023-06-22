@@ -9,7 +9,11 @@ const passport = require('passport');
 const { checkAuthorizedRoles } = require('../middlewares/auth.handler');
 const { ROLES } = require('../utils/auth/permissions-roles.utils');
 const { validatorHandler } = require('../middlewares/schema-validator.handler');
-const { getCategorySchema, createCategorySchema, updateCategorySchema } = require('../schemas/category.schemas');
+const {
+  getCategorySchema,
+  createCategorySchema,
+  updateCategorySchema,
+} = require('../schemas/category.schemas');
 const service = new CategoryService();
 
 /**
@@ -30,6 +34,7 @@ router.get('/', async (req, res, next) => {
 router.get(
   '/:id',
   validatorHandler(getCategorySchema, 'params'),
+
   async (req, res, next) => {
     try {
       const { id } = req.params;

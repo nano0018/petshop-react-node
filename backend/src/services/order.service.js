@@ -15,13 +15,9 @@ class OrderedProductsService extends CrudService {
     const productList = data.orderedProducts;
     productList.forEach(async (orderedProduct) => {
       const productId = orderedProduct.productId;
-      try {
-        const dbProduct = await productModel.findOne({ _id: productId });
-        if (!dbProduct) {
-          throw boom.notFound('Product not found');
-        }
-      } catch (error) {
-        console.error(error);
+      const dbProduct = await productModel.findOne({ _id: productId });
+      if (!dbProduct) {
+        throw boom.notFound('Product not found');
       }
     });
     const newOrder = await model.create(data);
@@ -44,6 +40,15 @@ class OrderedProductsService extends CrudService {
       ...order._doc,
       orderedProducts: populatedOrderedProducts
     };
+  }
+
+  async getUserId(id) {
+    const order = await model.findById(id);
+    if (!order) {
+      throw boom.notFound('Order not found');
+    }
+    const userId = order.userId;
+    return userId;
   }
 }
 

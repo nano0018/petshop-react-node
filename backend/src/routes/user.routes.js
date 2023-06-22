@@ -13,7 +13,7 @@ const {
   createEmployeeSchema,
 } = require('../schemas/user.schemas');
 const passport = require('passport');
-const { checkAuthorizedRoles } = require('../middlewares/auth.handler');
+const { checkAuthorizedRoles, checkId } = require('../middlewares/auth.handler');
 const { ROLES } = require('../utils/auth/permissions-roles.utils');
 const service = new UserService();
 
@@ -41,6 +41,7 @@ router.get(
   '/:id',
   passport.authenticate('jwt', { session: false }),
   checkAuthorizedRoles(...ROLES.registeredUser),
+  checkId(),
   validatorHandler(getUserSchema, 'params'),
   async (req, res, next) => {
     try {

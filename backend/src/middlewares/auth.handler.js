@@ -3,6 +3,8 @@
  */
 const boom = require('@hapi/boom');
 const { config } = require('../config/envConfig');
+const OrderedProductsService = require('../services/order.service');
+const service = new OrderedProductsService();
 
 
 /**
@@ -13,7 +15,8 @@ const checkAPIKey = (req, res, next) => {
   if (APIKey === config.apiKey) {
     next();
   } else {
-    next(boom.unauthorized());
+    const error = boom.unauthorized();
+    next(error);
   }
 };
 
@@ -26,9 +29,38 @@ const checkAuthorizedRoles = (...roles) => {
     if (roles.includes(user.role)) {
       next();
     } else {
-      next(boom.unauthorized());
+      const error = boom.unauthorized();
+      next(error);
     }
   };
 };
 
-module.exports = { checkAPIKey, checkAuthorizedRoles };
+/**
+ * User id validation for orders.
+ */
+
+const checkOrderUserId = () => {
+  return async (req, res, next) => {
+    const user = req.user;
+    const orderId = req.params.id;
+    const userId = await service.getUserId(orderId);
+    if (String(userId) === user.sub) {
+      next();
+    } else {
+      next(boom.unauthorized());
+    }
+  }
+}
+
+const checkId = () => {
+  return async (req, res, next) => {
+    const userId = req.params.id;
+    const user = req.user;
+    if (String(userId) === user.sub) {
+      next();
+    } else {
+      next(boom.unauthorized());
+    }
+  }
+}
+module.exports = { checkAPIKey, checkAuthorizedRoles, checkOrderUserId, checkId };

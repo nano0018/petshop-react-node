@@ -47,17 +47,18 @@ app.get('/api', (req, res) => {
   res.send('Prueba express');
 });
 
-/**
- * Error handlers middlewares
- */
-app.use(logErrors);
-app.use(boomErrorHandler);
-app.use(errorHandler);
 
 /**
  * API endpoint routes
- */
+*/
 routerAPI(app);
+
+/**
+ * Error handlers middlewares
+ */
+app.use(boomErrorHandler);
+app.use(logErrors);
+app.use(errorHandler);
 
 /**
  * App start
