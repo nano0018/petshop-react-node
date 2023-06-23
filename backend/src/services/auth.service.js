@@ -47,7 +47,7 @@ class AuthService {
   async changePassword(token, newPassword) {
     try {
       const payload = jwt.verify(token, config.jwtRecoveryKey);
-      const user = await service.findById(payload.sub);
+      const user = await (service.findByIdRecovery(payload.sub));
       if (user.recoveryToken !== token) {
         throw boom.unauthorized();
       }

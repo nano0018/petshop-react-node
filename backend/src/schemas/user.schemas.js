@@ -10,7 +10,9 @@ const id = Joi.string().regex(/^[a-zA-Z0-9 ]*$/);
 const name = Joi.string().min(3).max(15);
 const lastName = Joi.string().min(3).max(15);
 const email = Joi.string().email();
-const password = Joi.string().min(8).regex(/[a-zA-Z0-9]{3,30}/);
+const password = Joi.string()
+  .min(8)
+  .regex(/[a-zA-Z0-9]{3,30}/);
 const role = Joi.string().min(4).max(10);
 
 /**
@@ -43,6 +45,17 @@ const updateUserSchema = Joi.object({
   password: password,
   name: name,
   lastName: lastName,
+  role: role.invalid('admin', 'employee'),
+});
+
+/**
+ * Joi validation for update employee data.
+ */
+const updateEmployeeSchema = Joi.object({
+  email: email,
+  password: password,
+  name: name,
+  lastName: lastName,
   role: role,
 });
 
@@ -53,4 +66,10 @@ const getUserSchema = Joi.object({
   id: id.required(),
 });
 
-module.exports = { createUserSchema, getUserSchema, updateUserSchema, createEmployeeSchema };
+module.exports = {
+  createUserSchema,
+  getUserSchema,
+  updateUserSchema,
+  createEmployeeSchema,
+  updateEmployeeSchema,
+};

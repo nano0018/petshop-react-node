@@ -107,4 +107,23 @@ router.put(
   }
 );
 
+/**
+ * Delete category info by id.
+ */
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.employees),
+  validatorHandler(getCategorySchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const category = await service.delete(model, id);
+      res.json(category);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 module.exports = router;

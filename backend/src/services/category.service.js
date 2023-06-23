@@ -15,6 +15,7 @@ class CategoryService extends CrudService {
    * Category FindById service. Mongoose populate not working,
    *  so the method uses a manual query to retrieve the product array that
    *  contains the category id.
+   * @param {*} id Registered category id
    */
   async findById(id) {
     const data = await model.findById(id);

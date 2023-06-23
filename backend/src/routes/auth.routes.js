@@ -23,4 +23,30 @@ router.post(
   }
 );
 
+/**
+ * Recovery router
+ */
+router.post('/recovery', async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const recovery = await service.sendResetPassword(email);
+    res.json(recovery);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * Change router
+ */
+router.post('/change-password', async (req, res, next) => {
+  try {
+    const { token, newPassword } = req.body;
+    const recovery = await service.changePassword(token, newPassword);
+    res.json(recovery);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

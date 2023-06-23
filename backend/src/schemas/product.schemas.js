@@ -26,7 +26,6 @@ const createProductSchema = Joi.object({
   img: img.required(),
 });
 
-
 /**
  * Joi validation for update product data.
  */

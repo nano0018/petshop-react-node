@@ -6,6 +6,7 @@ const Joi = require('joi');
 /**
  * Joi validation types for user schema.
  */
+const id = Joi.string().regex(/^[a-zA-Z0-9 ]*$/);
 const userId = Joi.string().regex(/^[a-zA-Z0-9 ]*$/);
 const orderedProducts = Joi.array();
 
@@ -21,7 +22,6 @@ const createOrderedProductsSchema = Joi.object({
  * Joi validation for update user data.
  */
 const updateOrderedProductsSchema = Joi.object({
-  userId: userId.required(),
   orderedProducts: orderedProducts.required(),
 });
 
@@ -29,7 +29,7 @@ const updateOrderedProductsSchema = Joi.object({
  * Joi validation for getting user data.
  */
 const getOrderedProductsSchema = Joi.object({
-  userId: userId.required(),
+  id: id.required(),
 });
 
 module.exports = {

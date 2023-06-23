@@ -52,8 +52,8 @@ router.post(
   async (req, res, next) => {
     try {
       const body = req.body;
-      const newproduct = await service.create(model, body);
-      res.status(201).json(newproduct);
+      const newProduct = await service.create(model, body);
+      res.status(201).json(newProduct);
     } catch (error) {
       next(error);
     }
@@ -102,4 +102,24 @@ router.put(
   }
 );
 
+
+/**
+ * Delete product info by id.
+ */
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.employees),
+  validatorHandler(getProductSchema, 'params'),
+  validatorHandler(updateProductSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const product = await service.delete(model, id);
+      res.json(product);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 module.exports = router;

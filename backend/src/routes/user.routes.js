@@ -11,6 +11,7 @@ const {
   getUserSchema,
   updateUserSchema,
   createEmployeeSchema,
+  updateEmployeeSchema,
 } = require('../schemas/user.schemas');
 const passport = require('passport');
 const { checkAuthorizedRoles, checkId } = require('../middlewares/auth.handler');
@@ -34,6 +35,20 @@ router.get(
   }
 );
 
+router.get(
+  '/manage',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.employees),
+  async (req, res, next) => {
+    try {
+      const orders = await service.find(model);
+      res.json(orders);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 /**
  * Get user by id.
  */
@@ -48,6 +63,21 @@ router.get(
       const { id } = req.params;
       const user = await service.findById(model, id);
       res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.get(
+  '/manage/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.employees),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const order = await service.findById(model, id);
+      res.json(order);
     } catch (error) {
       next(error);
     }
@@ -95,11 +125,55 @@ router.post(
  * Update user info by id.
  */
 router.patch(
+  '/manage/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.admin),
+  validatorHandler(getUserSchema, 'params'),
+  validatorHandler(updateEmployeeSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const { id } = req.params;
+      const user = await service.update(model, id, body);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+/**
+ * Update user info by id.
+ */
+router.patch(
   '/:id',
   passport.authenticate('jwt', { session: false }),
   checkAuthorizedRoles(...ROLES.registeredUser),
+  checkId(),
   validatorHandler(getUserSchema, 'params'),
   validatorHandler(updateUserSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const body = req.body;
+      const { id } = req.params;
+      const user = await service.update(model, id, body);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+
+/**
+ * Update user info by id.
+ */
+router.put(
+  '/manage/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.admin),
+  validatorHandler(getUserSchema, 'params'),
+  validatorHandler(updateEmployeeSchema, 'body'),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -119,6 +193,7 @@ router.put(
   '/:id',
   passport.authenticate('jwt', { session: false }),
   checkAuthorizedRoles(...ROLES.registeredUser),
+  checkId(),
   validatorHandler(getUserSchema, 'params'),
   validatorHandler(updateUserSchema, 'body'),
   async (req, res, next) => {
@@ -126,6 +201,25 @@ router.put(
       const body = req.body;
       const { id } = req.params;
       const user = await service.update(model, id, body);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+/**
+ * Update user info by id.
+ */
+router.delete(
+  '/manage/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.admin),
+  validatorHandler(getUserSchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const user = await service.delete(model, id);
       res.json(user);
     } catch (error) {
       next(error);
