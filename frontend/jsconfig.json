@@ -2,14 +2,51 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@context/*": ["src/context/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@/*": ["src/*"]
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "@Navbar/*": [
+        "src/components/Navbar/*"
+      ],
+      "@Layout/*": [
+        "src/components/Layout/*"
+      ],
+      "@Home/*": [
+        "src/pages/Home/*"
+      ],
+      "@MyOrders/*": [
+        "src/pages/MyOrders/*"
+      ],
+      "@MyAccount/*": [
+        "src/pages/MyAccount/*"
+      ],
+      "@SignIn/*": [
+        "src/pages/SignIn/*"
+      ],
+      "@404/*": [
+        "src/pages/404/*"
+      ]
     }
   }
 }

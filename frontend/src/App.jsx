@@ -1,13 +1,17 @@
-import "@styles/App.css";
-import Test from "@components/test";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "@components/Navbar";
+import "./styles/App.css";
+import AppRoutes from "@utils/AppRoutes";
+import Layout from "@components/Layout";
 
 function App() {
-
   return (
-    <>
-    <h1>Hola</h1>
-    <Test></Test>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Layout>
+        <AppRoutes />
+      </Layout>
+    </BrowserRouter>
   );
 }
 
