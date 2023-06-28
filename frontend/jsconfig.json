@@ -46,6 +46,12 @@
       ],
       "@404/*": [
         "src/pages/404/*"
+      ],
+      "@Card/*": [
+        "src/components/Card/*"
+      ],
+      "@Test/*": [
+        "src/pages/Test/*"
       ]
     }
   }

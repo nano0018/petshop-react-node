@@ -23,7 +23,7 @@ app.use(express.json());
 /**
  * CORS Configurations
  */
-const whiteListCORS = ['http://localhost:8080', FRONTEND_URL];
+const whiteListCORS = ['http://localhost:5173', FRONTEND_URL];
 const options = {
   origin: (origin, callback) => {
     if (whiteListCORS.includes(origin) || !origin) {
