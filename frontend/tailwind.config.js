@@ -10,6 +10,7 @@ export default {
       light_gray: '#a9adb6',
       gray: '#9294a4',
       white: '#fff',
+      border_light_gray: '#dadce0',
     },
     fontFamily: {
       display: ['Barlow Condensed', 'sans-serif'],
