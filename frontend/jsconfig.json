@@ -52,6 +52,12 @@
       ],
       "@Test/*": [
         "src/pages/Test/*"
+      ],
+      "@CreateAccount/*": [
+        "src/pages/CreateAccount/*"
+      ],
+      "@ForgotPassword/*": [
+        "src/pages/ForgotPassword/*"
       ]
     }
   }

@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="font-display top-0 flex justify-between items-center fixed z-10 w-full py-3 px-5 text-sm font-light bg-white h-11">
       <Logo className="w-28 h-auto" />
-      <ul className="flex items-center gap-5">
+      <ul className="flex items-center gap-5 text-xl">
         <li>
           <NavLink to="/">Productos</NavLink>
         </li>

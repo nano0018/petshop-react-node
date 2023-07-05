@@ -1,4 +1,6 @@
 import NotFound from "@pages/404";
+import CreateAccount from "@pages/CreateAccount";
+import ForgotPassword from "@pages/ForgotPassword";
 import Home from "@pages/Home";
 import MyAccount from "@pages/MyAccount";
 import MyOrders from "@pages/MyOrders";
@@ -11,6 +13,8 @@ const AppRoutes = () => {
     { path: "/my-orders", element: <MyOrders /> },
     { path: "/my-account", element: <MyAccount /> },
     { path: "/login", element: <SignIn /> },
+    { path: "/sign-up", element: <CreateAccount /> },
+    { path: "/forgot-password", element: <ForgotPassword /> },
     { path: "/test", element: <Test /> },
     { path: "/*", element: <NotFound /> },
   ]);
