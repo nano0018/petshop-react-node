@@ -8,6 +8,7 @@ function SignIn() {
     email: "",
     password: "",
   });
+  const [message, setMessage] = useState("hidden")
   const [code, setCode] = useState("");
   const { email, password } = user;
   const onClick = async (e) => {
@@ -15,10 +16,12 @@ function SignIn() {
     const response = await login(user);
     console.log((response));
     if (!statusCodeValidation(response)) {
-      setCode(renderError(response))
+      setCode(renderError(response));
+      setMessage("")
     }
     setTimeout(() =>{
       setCode("")
+      setMessage("hidden")
     }, 4000)
   };
   const onChange = (e) => {
@@ -30,7 +33,7 @@ function SignIn() {
   return (
     <div className="grid grid-cols-1 place-items-center w-full h-[calc(100vh-4rem)] text-lg">
       <form className="flex flex-col justify-around items-center h-[22rem] w-80 py-3 border border-border_light_gray rounded-lg shadow-md ">
-        <div className="text-center text-sm bg-light_salmon text-salmon rounded-md px-1">{code}</div>
+        <div className={`${message} text-center text-sm bg-light_salmon text-salmon rounded-md px-1`}>{code}</div>
         <legend className="flex flex-row justify-between items-center w-2/5">
           <ArrowLeftOnRectangleIcon className="h-6 w-6 text-light_gray" />
           <span>Iniciar sesión</span>
