@@ -1,14 +1,36 @@
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
-import { useCallback } from "react";
+import { login, renderError, statusCodeValidation } from "@utils/auth/loginHandler";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function SignIn() {
-  const onClick = useCallback((e) => {
-    e.preventDefault();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
   });
+  const [code, setCode] = useState("");
+  const { email, password } = user;
+  const onClick = async (e) => {
+    e.preventDefault();
+    const response = await login(user);
+    console.log((response));
+    if (!statusCodeValidation(response)) {
+      setCode(renderError(response))
+    }
+    setTimeout(() =>{
+      setCode("")
+    }, 4000)
+  };
+  const onChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="grid grid-cols-1 place-items-center w-full h-[calc(100vh-4rem)] text-lg">
       <form className="flex flex-col justify-around items-center h-[22rem] w-80 py-3 border border-border_light_gray rounded-lg shadow-md ">
+        <div className="text-center text-sm bg-light_salmon text-salmon rounded-md px-1">{code}</div>
         <legend className="flex flex-row justify-between items-center w-2/5">
           <ArrowLeftOnRectangleIcon className="h-6 w-6 text-light_gray" />
           <span>Iniciar sesión</span>
@@ -21,7 +43,10 @@ function SignIn() {
               type="email"
               name="email"
               id="email"
+              value={email}
               placeholder="Correo electrónico"
+              onChange={onChange}
+              required
             />
           </p>
           <p className="flex flex-col justify-between w-3/4">
@@ -31,13 +56,19 @@ function SignIn() {
               type="password"
               name="password"
               id="password"
+              value={password}
+              onChange={onChange}
+              required
             />
           </p>
           <NavLink to="/forgot-password" className="font-bold">
             ¿Ha olvidado su contraseña?
           </NavLink>
           <div className="flex flex-row justify-around items-center w-5/6 mt-10 p-0">
-            <NavLink to="/sign-up" className="font-bold text-gray transition delay-50 ease-in hover:text-black_blue">
+            <NavLink
+              to="/sign-up"
+              className="font-bold text-gray transition delay-50 ease-in hover:text-black_blue"
+            >
               Crear cuenta
             </NavLink>
             <button

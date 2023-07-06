@@ -58,6 +58,15 @@
       ],
       "@ForgotPassword/*": [
         "src/pages/ForgotPassword/*"
+      ],
+      "@ProductDetailSideBar/*": [
+        "src/components/ProductDetailSideBar/*"
+      ],
+      "@auth/*": [
+        "src/utils/auth/*"
+      ],
+      "@config/*": [
+        "src/utils/config/*"
       ]
     }
   }

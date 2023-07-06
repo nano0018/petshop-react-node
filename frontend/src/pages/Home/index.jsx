@@ -1,5 +1,6 @@
 import Card from "@components/Card";
-import FetchData from "@utils/FetchData";
+import ProductDetailSideBar from "@components/ProductDetailSideBar";
+import { FetchData } from "@utils/FetchData";
 import { useEffect, useState } from "react";
 
 function Home() {
@@ -15,7 +16,6 @@ function Home() {
   }, []);
   return (
     <>
-      <h1 className="text-6xl font-display text-gray-600">Hola mundo</h1>
       <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {items.map((item) => (
           <Card
@@ -29,6 +29,7 @@ function Home() {
           />
         ))}
       </div>
+      <ProductDetailSideBar />
     </>
   );
 }
