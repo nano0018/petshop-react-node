@@ -14,7 +14,6 @@ function SignIn() {
   const onClick = async (e) => {
     e.preventDefault();
     const response = await login(user);
-    console.log((response));
     if (!statusCodeValidation(response)) {
       setCode(renderError(response));
       setMessage("")
@@ -35,7 +34,7 @@ function SignIn() {
       <form className="flex flex-col justify-around items-center h-[22rem] w-80 py-3 border border-border_light_gray rounded-lg shadow-md ">
         <div className={`${message} text-center text-sm bg-light_salmon text-salmon rounded-md px-1`}>{code}</div>
         <legend className="flex flex-row justify-between items-center w-2/5">
-          <ArrowLeftOnRectangleIcon className="h-6 w-6 text-light_gray" />
+          <ArrowLeftOnRectangleIcon className="h-6 w-6 text-gray" />
           <span>Iniciar sesión</span>
         </legend>
         <div className="flex flex-col items-center w-full h-2/3">
@@ -75,7 +74,7 @@ function SignIn() {
               Crear cuenta
             </NavLink>
             <button
-              className="rounded-md w-2/4 h-8 bg-light_gray text-white transition delay-50 ease-in hover:bg-black_blue"
+              className="rounded-md w-2/4 h-8 bg-gray text-white transition delay-50 ease-in hover:bg-black_blue"
               onClick={onClick}
             >
               Iniciar sesión

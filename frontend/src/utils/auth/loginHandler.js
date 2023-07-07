@@ -26,4 +26,30 @@ const renderError = (response) => {
   return errorCodes[response.status];
 };
 
-export { login, renderError, statusCodeValidation };
+const signUp = async (newUserData) => {
+  const { name, lastName, email, password } = newUserData;
+  try {
+    const response = await PostData(`${api.baseURL}/users`, {
+      name,
+      lastName,
+      email,
+      password,
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+const recoveryPassword = async (email) => {
+  try {
+    const response = await PostData(`${api.baseURL}/auth/recovery`, {
+      email,
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export { login, signUp, renderError, statusCodeValidation, recoveryPassword };
