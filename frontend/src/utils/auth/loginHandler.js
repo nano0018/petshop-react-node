@@ -52,4 +52,23 @@ const recoveryPassword = async (email) => {
   }
 };
 
-export { login, signUp, renderError, statusCodeValidation, recoveryPassword };
+const changePassword = async (token, newPassword) => {
+  try {
+    const response = await PostData(`${api.baseURL}/auth/change-password`, {
+      token,
+      newPassword,
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export {
+  login,
+  signUp,
+  renderError,
+  statusCodeValidation,
+  recoveryPassword,
+  changePassword,
+};

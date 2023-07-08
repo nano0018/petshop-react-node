@@ -77,7 +77,7 @@ class AuthService {
     const token = jwt.sign(payload, config.jwtRecoveryKey, {
       expiresIn: '15min',
     });
-    const link = `http://frontend.store.co/recovery?token=${token}`;
+    const link = `${config.frontendUrl}/recovery?token=${token}`;
 
     await service.update(userModel, user.id, {
       recoveryToken: token,

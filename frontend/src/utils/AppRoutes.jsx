@@ -1,4 +1,5 @@
 import NotFound from "@pages/404";
+import ChangePassword from "@pages/ChangePassword";
 import CreateAccount from "@pages/CreateAccount";
 import ForgotPassword from "@pages/ForgotPassword";
 import Home from "@pages/Home";
@@ -15,6 +16,7 @@ const AppRoutes = () => {
     { path: "/login", element: <SignIn /> },
     { path: "/sign-up", element: <CreateAccount /> },
     { path: "/forgot-password", element: <ForgotPassword /> },
+    { path: "/recovery", element: <ChangePassword /> },
     { path: "/test", element: <Test /> },
     { path: "/*", element: <NotFound /> },
   ]);

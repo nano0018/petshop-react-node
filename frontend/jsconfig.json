@@ -26,50 +26,11 @@
       "@/*": [
         "src/*"
       ],
-      "@Navbar/*": [
-        "src/components/Navbar/*"
+      "@ForgotPassword copy/*": [
+        "src/pages/ChangePassword/*"
       ],
-      "@Layout/*": [
-        "src/components/Layout/*"
-      ],
-      "@Home/*": [
-        "src/pages/Home/*"
-      ],
-      "@MyOrders/*": [
-        "src/pages/MyOrders/*"
-      ],
-      "@MyAccount/*": [
-        "src/pages/MyAccount/*"
-      ],
-      "@SignIn/*": [
-        "src/pages/SignIn/*"
-      ],
-      "@404/*": [
-        "src/pages/404/*"
-      ],
-      "@Card/*": [
-        "src/components/Card/*"
-      ],
-      "@Test/*": [
-        "src/pages/Test/*"
-      ],
-      "@CreateAccount/*": [
-        "src/pages/CreateAccount/*"
-      ],
-      "@ForgotPassword/*": [
-        "src/pages/ForgotPassword/*"
-      ],
-      "@ProductDetailSideBar/*": [
-        "src/components/ProductDetailSideBar/*"
-      ],
-      "@auth/*": [
-        "src/utils/auth/*"
-      ],
-      "@config/*": [
-        "src/utils/config/*"
-      ],
-      "@ProfileDropdown/*": [
-        "src/components/ProfileDropdown/*"
+      "@ChangePassword/*": [
+        "src/pages/ChangePassword/*"
       ]
     }
   }

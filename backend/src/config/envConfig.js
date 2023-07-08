@@ -18,6 +18,7 @@ const config = {
   jwtRecoveryKey: process.env.JWT_RECOVERY_KEY,
   recoveryServiceEmail: process.env.BACKEND_MAIL,
   recoveryServicePassword: process.env.MAIL_PASSWORD,
+  frontendUrl: process.env.FRONTEND_URL,
 };
 
 module.exports = { config }
