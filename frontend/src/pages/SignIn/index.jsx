@@ -1,9 +1,12 @@
+import { GlobalContext } from "@context/loginContext";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
 import { login, renderError, statusCodeValidation } from "@utils/auth/loginHandler";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const context = useContext(GlobalContext)
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -12,16 +15,21 @@ function SignIn() {
   const [code, setCode] = useState("");
   const { email, password } = user;
   const onClick = async (e) => {
+    localStorage.removeItem("token");
     e.preventDefault();
     const response = await login(user);
     if (!statusCodeValidation(response)) {
       setCode(renderError(response));
       setMessage("")
+      setTimeout(() =>{
+        setCode("")
+        setMessage("hidden")
+      }, 4000)
+    } else {
+      localStorage.setItem("token", response.data.token);
+      context.setIsLoggedIn(true);
+      navigate("/");
     }
-    setTimeout(() =>{
-      setCode("")
-      setMessage("hidden")
-    }, 4000)
   };
   const onChange = (e) => {
     setUser({

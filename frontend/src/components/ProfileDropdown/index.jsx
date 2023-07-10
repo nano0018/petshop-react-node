@@ -1,14 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { NavLink } from "react-router-dom";
-import { ArrowRightOnRectangleIcon, QueueListIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  AdjustmentsHorizontalIcon,
+  ArrowRightOnRectangleIcon,
+  QueueListIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/solid";
+import { signOut } from "@utils/auth/loginHandler";
+import { GlobalContext } from "@context/loginContext";
+import { ROLES } from "@utils/auth/permissionsRoles";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProfileDropdown() {
+  const context = useContext(GlobalContext);
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -32,7 +41,7 @@ export default function ProfileDropdown() {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-light_gray rounded-md bg-white shadow-lg ring-1 ring-gray ring-opacity-5 focus:outline-none">
           <div className="py-1">
-          <Menu.Item>
+            <Menu.Item>
               {({ active }) => (
                 <NavLink
                   to="/my-account"
@@ -41,10 +50,13 @@ export default function ProfileDropdown() {
                     "flex flex-row justify-start items-center px-4 py-2 text-lg"
                   )}
                 >
-                  <UserCircleIcon className={classNames(
-                    active ? "text-black_blue" : "text-gray",
-                    "h-6 w-6 mr-2"
-                  )}/><span>Mi perfil</span>
+                  <UserCircleIcon
+                    className={classNames(
+                      active ? "text-black_blue" : "text-gray",
+                      "h-6 w-6 mr-2"
+                    )}
+                  />
+                  <span>Mi perfil</span>
                 </NavLink>
               )}
             </Menu.Item>
@@ -57,13 +69,37 @@ export default function ProfileDropdown() {
                     "flex flex-row justify-start items-center px-4 py-2 text-lg"
                   )}
                 >
-                  <QueueListIcon className={classNames(
-                    active ? "text-black_blue" : "text-gray",
-                    "h-6 w-6 mr-2"
-                  )}/><span>Mis órdenes</span>
+                  <QueueListIcon
+                    className={classNames(
+                      active ? "text-black_blue" : "text-gray",
+                      "h-6 w-6 mr-2"
+                    )}
+                  />
+                  <span>Mis órdenes</span>
                 </NavLink>
               )}
             </Menu.Item>
+            {ROLES.employees.includes(context.loginRole) && (
+              <Menu.Item>
+                {({ active }) => (
+                  <NavLink
+                    to="/my-orders"
+                    className={classNames(
+                      active ? "text-black_blue" : "text-gray",
+                      "flex flex-row justify-start items-center px-4 py-2 text-lg"
+                    )}
+                  >
+                    <AdjustmentsHorizontalIcon
+                      className={classNames(
+                        active ? "text-black_blue" : "text-gray",
+                        "h-6 w-6 mr-2"
+                      )}
+                    />
+                    <span>Panel de administración</span>
+                  </NavLink>
+                )}
+              </Menu.Item>
+            )}
           </div>
           <div className="py-1">
             <Menu.Item>
@@ -74,11 +110,18 @@ export default function ProfileDropdown() {
                     active ? "text-black_blue" : "text-gray",
                     "flex flex-row justify-start items-center px-4 py-2 text-lg"
                   )}
+                  onClick={() => {
+                    signOut();
+                    context.setIsLoggedIn(false);
+                  }}
                 >
-                  <ArrowRightOnRectangleIcon className={classNames(
-                    active ? "text-black_blue" : "text-gray",
-                    "h-6 w-6 mr-2"
-                  )}/><span>Cerrar sesión</span>
+                  <ArrowRightOnRectangleIcon
+                    className={classNames(
+                      active ? "text-black_blue" : "text-gray",
+                      "h-6 w-6 mr-2"
+                    )}
+                  />
+                  <span>Cerrar sesión</span>
                 </NavLink>
               )}
             </Menu.Item>

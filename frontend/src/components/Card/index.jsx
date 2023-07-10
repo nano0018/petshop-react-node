@@ -1,7 +1,6 @@
 import { ShoppingCartIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
-function Card({ title, categoryId, stock, price, description, imgURL }) {
-  console.log(title, categoryId, stock, description, imgURL);
+function Card({ title, stock, price, description, imgURL }) {
   return (
     <div className="bg-white cursor-pointer w-56 h-96 border-solid rounded-lg shadow-lg shadow-light_salmon">
       <figure className="relative w-full h-fit mb-0 transition delay-75 ease-in active:scale-95">
