@@ -1,4 +1,4 @@
-import { GlobalContext } from "@context/loginContext";
+import { GlobalContext } from "@context/GlobalContext";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
 import { login, renderError, statusCodeValidation } from "@utils/auth/loginHandler";
 import { useContext, useState } from "react";

@@ -1,9 +1,16 @@
+import { GlobalContext } from "@context/GlobalContext";
 import { ShoppingCartIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import PropTypes from "prop-types";
+import { useContext } from "react";
 function Card({ title, stock, price, description, imgURL }) {
+  const context = useContext(GlobalContext);
+  const openProductDetail = () => {
+    context.setIsProductDetailOpened(true);
+    context.setProductDetailData({ title, stock, price, description, imgURL })
+  }
   return (
     <div className="bg-white cursor-pointer w-56 h-96 border-solid rounded-lg shadow-lg shadow-light_salmon">
-      <figure className="relative w-full h-fit mb-0 transition delay-75 ease-in active:scale-95">
+      <figure className="relative w-full h-fit mb-0 transition delay-75 ease-in active:scale-95" onClick={() => openProductDetail()}>
         <img
           className="w-full h-fit object-cover rounded-t-lg"
           src={imgURL}
@@ -19,7 +26,12 @@ function Card({ title, stock, price, description, imgURL }) {
           <span className="text-gray h-10">{description}</span>
           <span>Stock: {stock} Unidades</span>
         </p>
-        <button className="bg-gray text-white p-2 rounded-md w-5/6 flex flex-row items-center justify-between transition delay-50 ease-in hover:bg-black_blue active:scale-110">
+        <button
+          className="bg-gray text-white p-2 rounded-md w-5/6 flex flex-row items-center justify-between transition delay-50 ease-in hover:bg-black_blue active:scale-110"
+          onClick={() =>
+            context.setCartProductCount(context.cartProductCount + 1)
+          }
+        >
           Agregar al carrito
           <span className="relative">
             <PlusCircleIcon className="absolute top-0 right-0 h-4 w-4 text-black_blue" />

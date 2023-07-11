@@ -1,4 +1,4 @@
-import { GlobalContext } from "@context/loginContext";
+import { GlobalContext } from "@context/GlobalContext";
 import callLogin from "@hooks/useLogin";
 import NotFound from "@pages/404";
 import ChangePassword from "@pages/ChangePassword";
@@ -17,8 +17,6 @@ const AppRoutes = () => {
   useEffect(() => {
     context.setLoginRole(callLogin());
   }, [context.isLoggedIn]);
-
-  console.log(context.loginRole);
 
   let routes = useRoutes([
     { path: "/", element: <Home /> },

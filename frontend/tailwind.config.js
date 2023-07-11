@@ -5,6 +5,7 @@ export default {
     extend: {},
     colors: {
       salmon: '#fc5757',
+      black: '#000',
       black_blue: '#203047',
       light_salmon: '#efdadb',
       light_gray: '#dcdfe6',

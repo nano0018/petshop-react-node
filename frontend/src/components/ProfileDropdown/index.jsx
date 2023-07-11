@@ -9,7 +9,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import { signOut } from "@utils/auth/loginHandler";
-import { GlobalContext } from "@context/loginContext";
+import { GlobalContext } from "@context/GlobalContext";
 import { ROLES } from "@utils/auth/permissionsRoles";
 
 function classNames(...classes) {
