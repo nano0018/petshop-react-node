@@ -1,0 +1,10 @@
+// run this over mongosh
+use petshop;
+db.createUser({
+  user: "storeAdmin",
+  pwd: "storeAdmin2023",
+  roles: [
+    { role: "readWrite", db: "petshop" },
+  ],
+});
+
