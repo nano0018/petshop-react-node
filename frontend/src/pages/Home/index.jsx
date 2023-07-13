@@ -1,4 +1,5 @@
 import Card from "@components/Card";
+import Cart from "@components/Cart";
 import ProductDetailSideBar from "@components/ProductDetailSideBar";
 import { FetchData } from "@utils/FetchData";
 import { useEffect, useState } from "react";
@@ -20,6 +21,7 @@ function Home() {
         {items.map((item) => (
           <Card
             key={item._id}
+            id={item._id}
             title={item.name}
             categoryId={item.category}
             stock={item.stock}
@@ -30,6 +32,7 @@ function Home() {
         ))}
       </div>
       <ProductDetailSideBar />
+      <Cart />
     </>
   );
 }

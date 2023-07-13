@@ -31,6 +31,12 @@
       ],
       "@ChangePassword/*": [
         "src/pages/ChangePassword/*"
+      ],
+      "@Cart/*": [
+        "src/components/Cart/*"
+      ],
+      "@MiniCard/*": [
+        "src/components/MiniCard/*"
       ]
     }
   }
