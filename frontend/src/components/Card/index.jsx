@@ -70,7 +70,7 @@ function Card({ title, stock, price, description, imgURL, id }) {
         >
           Agregar al carrito
           <span className="relative">
-            <PlusCircleIcon className="absolute top-0 right-0 h-4 w-4 text-black_blue" />
+            <PlusCircleIcon className="absolute top-0 right-[-4px] h-5 w-5 text-black_blue" />
             <ShoppingCartIcon className="h-7 w-7" />
           </span>
         </button>

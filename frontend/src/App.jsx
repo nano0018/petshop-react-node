@@ -4,6 +4,7 @@ import "./styles/App.css";
 import AppRoutes from "@utils/AppRoutes";
 import Layout from "@components/Layout";
 import { GlobalContextProvider } from "@context/GlobalContext";
+import Cart from "@components/Cart";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Navbar />
         <Layout>
           <AppRoutes />
+          <Cart />
         </Layout>
       </BrowserRouter>
     </GlobalContextProvider>

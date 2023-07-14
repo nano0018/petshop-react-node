@@ -16,11 +16,8 @@ services:
       - type: bind
         source: ./data
         target: /data/db
-      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - 27017:27017
-    user:
-      "1000"
 
   mongo-express:
     image: mongo-express

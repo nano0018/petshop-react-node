@@ -64,6 +64,8 @@ const changePassword = async (token, newPassword) => {
   }
 };
 
+
+
 const signOut = () => {
   localStorage.removeItem('token');
 }
@@ -75,5 +77,6 @@ export {
   statusCodeValidation,
   recoveryPassword,
   changePassword,
-  signOut
+  signOut,
+
 };

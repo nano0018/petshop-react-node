@@ -16,4 +16,22 @@ const PostData = async (URL, data) => {
     );
 };
 
-export { PostData };
+const PostDataToken = async (URL, data) => {
+  return axios({
+    method: 'post',
+    url: `${URL}`,
+    data: { ...data },
+    timeout: 1000,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then((response) => response)
+    .catch((error) =>
+      error.code === 'ECONNABORTED' ? (error = { status: 500 }) : error.response
+    );
+};
+
+
+export { PostData, PostDataToken };
