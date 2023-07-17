@@ -1,6 +1,6 @@
 import { GlobalContext } from "@context/GlobalContext";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
-import { login, renderError, statusCodeValidation } from "@utils/auth/loginHandler";
+import { login, renderError, statusCodeValidation } from "@utils/requestHandler";
 import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 

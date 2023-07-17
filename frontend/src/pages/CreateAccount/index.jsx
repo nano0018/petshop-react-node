@@ -4,7 +4,7 @@ import {
   renderError,
   signUp,
   statusCodeValidation,
-} from "@utils/auth/loginHandler";
+} from "@utils/requestHandler";
 import { NavLink } from "react-router-dom";
 
 function CreateAccount() {

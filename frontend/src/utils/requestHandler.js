@@ -1,6 +1,15 @@
-import { PostData } from '@utils/APICall';
+import { GetData, PostData } from '@utils/APICall';
 import { api } from '@utils/config/APIUrl';
-import { errorCodes } from './errorCodes';
+import { errorCodes } from './auth/errorCodes';
+
+const fetchData = async (URL) => {
+  try {
+    const response = await GetData(`${api.baseURL}/${URL}`);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
 
 const login = async (userData) => {
   const { email, password } = userData;
@@ -64,13 +73,12 @@ const changePassword = async (token, newPassword) => {
   }
 };
 
-
-
 const signOut = () => {
   localStorage.removeItem('token');
-}
+};
 
 export {
+  fetchData,
   login,
   signUp,
   renderError,
@@ -78,5 +86,4 @@ export {
   recoveryPassword,
   changePassword,
   signOut,
-
 };

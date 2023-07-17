@@ -24,6 +24,17 @@ router.post(
 );
 
 /**
+ * Validate token router
+ */
+router.get(
+  '/validate',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.status(200).json('Authorized');
+  }
+);
+
+/**
  * Recovery router
  */
 router.post('/recovery', async (req, res, next) => {

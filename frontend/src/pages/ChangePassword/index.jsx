@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
-import { changePassword, statusCodeValidation } from "@utils/auth/loginHandler";
+import { changePassword, statusCodeValidation } from "@utils/requestHandler";
 import { useLocation } from "react-router-dom";
 
 function ChangePassword() {

@@ -6,7 +6,6 @@ const { config } = require('../config/envConfig');
 const OrderedProductsService = require('../services/order.service');
 const service = new OrderedProductsService();
 
-
 /**
  * API Key validation.
  */
@@ -38,7 +37,6 @@ const checkAuthorizedRoles = (...roles) => {
 /**
  * User id validation for orders.
  */
-
 const checkOrderUserId = () => {
   return async (req, res, next) => {
     const user = req.user;
@@ -49,9 +47,12 @@ const checkOrderUserId = () => {
     } else {
       next(boom.unauthorized());
     }
-  }
-}
+  };
+};
 
+/**
+ * User id validation.
+ */
 const checkId = () => {
   return async (req, res, next) => {
     const userId = req.params.id;
@@ -61,6 +62,11 @@ const checkId = () => {
     } else {
       next(boom.unauthorized());
     }
-  }
-}
-module.exports = { checkAPIKey, checkAuthorizedRoles, checkOrderUserId, checkId };
+  };
+};
+module.exports = {
+  checkAPIKey,
+  checkAuthorizedRoles,
+  checkOrderUserId,
+  checkId,
+};

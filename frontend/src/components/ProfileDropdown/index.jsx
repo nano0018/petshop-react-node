@@ -8,7 +8,7 @@ import {
   QueueListIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import { signOut } from "@utils/auth/loginHandler";
+import { signOut } from "@utils/requestHandler";
 import { GlobalContext } from "@context/GlobalContext";
 import { ROLES } from "@utils/auth/permissionsRoles";
 

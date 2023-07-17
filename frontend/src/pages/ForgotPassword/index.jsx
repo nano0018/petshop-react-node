@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 import { NavLink } from "react-router-dom";
-import { recoveryPassword, statusCodeValidation } from "@utils/auth/loginHandler";
+import { recoveryPassword, statusCodeValidation } from "@utils/requestHandler";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
