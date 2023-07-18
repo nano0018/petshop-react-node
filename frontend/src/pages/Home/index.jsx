@@ -1,5 +1,5 @@
 import Card from "@components/Card";
-import ProductDetailSideBar from "@components/ProductDetailSideBar";
+import ProductDetailModal from "@components/ProductDetailModal";
 import { fetchData } from "@utils/requestHandler";
 import { useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ function Home() {
           />
         ))}
       </div>
-      <ProductDetailSideBar />
+      <ProductDetailModal />
     </>
   );
 }

@@ -6,11 +6,10 @@ import {
 } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 
-function ProductDetailSideBar() {
+function ProductDetailModal() {
   const context = useContext(GlobalContext);
   const product = context.productDetailData;
   const toggleProductDetail = () => {
-    console.log(context.isProductDetailOpened);
     context.setIsProductDetailOpened(!context.isProductDetailOpened);
   };
   return (
@@ -66,4 +65,4 @@ function ProductDetailSideBar() {
   );
 }
 
-export default ProductDetailSideBar;
+export default ProductDetailModal;

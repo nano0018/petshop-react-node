@@ -27,17 +27,11 @@
       "@/*": [
         "src/*"
       ],
-      "@ForgotPassword copy/*": [
-        "src/pages/ChangePassword/*"
+      "@ProductDetailModal/*": [
+        "src/components/ProductDetailModal/*"
       ],
-      "@ChangePassword/*": [
-        "src/pages/ChangePassword/*"
-      ],
-      "@Cart/*": [
-        "src/components/Cart/*"
-      ],
-      "@MiniCard/*": [
-        "src/components/MiniCard/*"
+      "@ChangePasswordModal/*": [
+        "src/components/ChangePasswordModal/*"
       ]
     }
   }

@@ -1,4 +1,4 @@
-import { GetData, PostData } from '@utils/APICall';
+import { GetData, PatchDataToken, PostData } from '@utils/APICall';
 import { api } from '@utils/config/APIUrl';
 import { errorCodes } from './auth/errorCodes';
 
@@ -77,6 +77,17 @@ const signOut = () => {
   localStorage.removeItem('token');
 };
 
+const updateUserData = async (id, data) => {
+  try {
+    const response = await PatchDataToken(`${api.baseURL}/users/${id}`, {
+      ...data,
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}
+
 export {
   fetchData,
   login,
@@ -86,4 +97,5 @@ export {
   recoveryPassword,
   changePassword,
   signOut,
+  updateUserData
 };

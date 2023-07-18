@@ -1,5 +1,4 @@
 import { GlobalContext } from "@context/GlobalContext";
-import callLogin from "@hooks/useLogin";
 import NotFound from "@pages/404";
 import ChangePassword from "@pages/ChangePassword";
 import CreateAccount from "@pages/CreateAccount";
@@ -11,6 +10,7 @@ import SignIn from "@pages/SignIn";
 import { useContext, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import { fetchData } from "./requestHandler";
+import { callLogin } from "@hooks/useLogin";
 
 const AppRoutes = () => {
   const context = useContext(GlobalContext);
@@ -31,13 +31,15 @@ const AppRoutes = () => {
         console.error(error);
       }
     };
-
-    validateToken().catch(console.error);
+    if (!localStorage.getItem("token")) {
+      setIsVaLidToken(false);
+    } else {
+      validateToken().catch(console.error);
+    }
   }, []);
 
   useEffect(() => {
     if (isValidToken) {
-      console.log("isValidToken:", isValidToken);
       context.setLoginRole(callLogin());
       context.setIsLoggedIn(true);
     }

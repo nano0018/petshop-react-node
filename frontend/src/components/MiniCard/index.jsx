@@ -13,6 +13,7 @@ function MiniCard({ title, price, imgURL, id, deleteProduct }) {
     return products.filter((product) => product.id === id)[0].count;
   };
 
+
   useEffect(() => {
     setCountItem(getProductQty());
   }, [context.cartProductCount]);

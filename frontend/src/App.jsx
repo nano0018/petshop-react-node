@@ -5,6 +5,7 @@ import AppRoutes from "@utils/AppRoutes";
 import Layout from "@components/Layout";
 import { GlobalContextProvider } from "@context/GlobalContext";
 import Cart from "@components/Cart";
+import ChangePasswordModal from "@components/ChangePasswordModal";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Layout>
           <AppRoutes />
           <Cart />
+          <ChangePasswordModal />
         </Layout>
       </BrowserRouter>
     </GlobalContextProvider>

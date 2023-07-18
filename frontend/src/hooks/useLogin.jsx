@@ -1,7 +1,7 @@
 
 import * as jose from "jose";
 
-function callLogin() {
+const callLogin = () => {
   const token = localStorage.getItem("token");
   if (!token) {
     return null;
@@ -9,4 +9,17 @@ function callLogin() {
   return (jose.decodeJwt(token).role)
 }
 
-export default callLogin;
+const callUserData = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return null;
+  }
+  return {
+    name: jose.decodeJwt(token).name,
+    lastName: jose.decodeJwt(token).lastName,
+    id: jose.decodeJwt(token).sub,
+  }
+}
+
+
+export  {callLogin, callUserData};

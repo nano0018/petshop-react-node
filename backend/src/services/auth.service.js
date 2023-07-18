@@ -31,6 +31,8 @@ class AuthService {
     const payload = {
       sub: user.id,
       role: user.role,
+      name: user.name,
+      lastName: user.lastName,
     };
     const token = jwt.sign(payload, config.jwtKey, { expiresIn: 3600000 });
     const userData = {

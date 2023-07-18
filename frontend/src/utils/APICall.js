@@ -58,4 +58,21 @@ const PostDataToken = async (URL, data) => {
     );
 };
 
-export { GetData, PostData, PostDataToken };
+const PatchDataToken = async (URL, data) => {
+  return axios({
+    method: 'PATCH',
+    url: `${URL}`,
+    data: { ...data },
+    timeout: 1000,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  })
+    .then((response) => response)
+    .catch((error) =>
+      error.code === 'ECONNABORTED' ? (error = { status: 500 }) : error.response
+    );
+};
+
+export { GetData, PostData, PostDataToken, PatchDataToken };

@@ -11,6 +11,8 @@ export const GlobalContextProvider = ({ children }) => {
   const [productCartData, setProductCartData] = useState([]);
   const [isProductDetailOpened, setIsProductDetailOpened] = useState(false);
   const [isProductCartOpened, setIsProductCartOpened] = useState(false);
+  const [isChangePasswordModalOpened, setIsChangePasswordModalOpened] =
+    useState(false);
 
   return (
     <GlobalContext.Provider
@@ -29,6 +31,8 @@ export const GlobalContextProvider = ({ children }) => {
         setIsProductCartOpened,
         productCartData,
         setProductCartData,
+        isChangePasswordModalOpened,
+        setIsChangePasswordModalOpened,
       }}
     >
       {children}
