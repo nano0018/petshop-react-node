@@ -10,7 +10,7 @@ import SignIn from "@pages/SignIn";
 import { useContext, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import { fetchData } from "./requestHandler";
-import { callLogin } from "@hooks/useLogin";
+import { callLogin, callUserData } from "@hooks/useLogin";
 
 const AppRoutes = () => {
   const context = useContext(GlobalContext);
@@ -42,6 +42,7 @@ const AppRoutes = () => {
     if (isValidToken) {
       context.setLoginRole(callLogin());
       context.setIsLoggedIn(true);
+      context.setUserId(callUserData().id);
     }
   }, [isValidToken]);
 

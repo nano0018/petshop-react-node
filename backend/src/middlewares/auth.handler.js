@@ -40,8 +40,13 @@ const checkAuthorizedRoles = (...roles) => {
 const checkOrderUserId = () => {
   return async (req, res, next) => {
     const user = req.user;
+    let userId;
     const orderId = req.params.id;
-    const userId = await service.getUserId(orderId);
+    try {
+      userId = await service.getUserId(orderId);
+    } catch (error) {
+      next(error);
+    }
     if (String(userId) === user.sub) {
       next();
     } else {

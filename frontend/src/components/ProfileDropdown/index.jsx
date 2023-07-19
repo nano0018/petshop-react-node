@@ -113,6 +113,7 @@ export default function ProfileDropdown() {
                   onClick={() => {
                     signOut();
                     context.setIsLoggedIn(false);
+                    context.setUserId("");
                   }}
                 >
                   <ArrowRightOnRectangleIcon

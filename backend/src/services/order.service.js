@@ -64,6 +64,11 @@ class OrderedProductsService extends CrudService {
     };
   }
 
+  /**
+   * Get user id by id order method for Order schema.
+   * @param {*} id Registered order id.
+   * @returns A registered order.
+   */
   async getUserId(id) {
     const order = await model.findById(id);
     if (!order) {
@@ -71,6 +76,19 @@ class OrderedProductsService extends CrudService {
     }
     const userId = order.userId;
     return userId;
+  }
+
+   /**
+   * Get user orders by user id method for Order schema.
+   * @param {*} id Registered user id.
+   * @returns {Array} Array of user orders.
+   */
+   async getOrderByUserId(id) {
+    const orders = await model.find({userId: id});
+    if (!orders) {
+      throw boom.notFound('Orders not found');
+    }
+    return orders;
   }
 
   async updateOrder(id, changes) {

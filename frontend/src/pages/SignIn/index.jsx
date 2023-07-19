@@ -1,5 +1,6 @@
 import { GlobalContext } from "@context/GlobalContext";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
+import { callUserData } from "@hooks/useLogin";
 import { login, renderError, statusCodeValidation } from "@utils/requestHandler";
 import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -28,6 +29,7 @@ function SignIn() {
     } else {
       localStorage.setItem("token", response.data.token);
       context.setIsLoggedIn(true);
+      context.setUserId(callUserData().id);
       navigate("/");
     }
   };

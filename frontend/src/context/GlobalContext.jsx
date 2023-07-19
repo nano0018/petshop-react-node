@@ -5,6 +5,7 @@ export const GlobalContext = createContext();
 
 export const GlobalContextProvider = ({ children }) => {
   const [loginRole, setLoginRole] = useState("");
+  const [userId, setUserId] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartProductCount, setCartProductCount] = useState(0);
   const [productDetailData, setProductDetailData] = useState({});
@@ -19,6 +20,8 @@ export const GlobalContextProvider = ({ children }) => {
       value={{
         loginRole,
         setLoginRole,
+        userId,
+        setUserId,
         isLoggedIn,
         setIsLoggedIn,
         cartProductCount,

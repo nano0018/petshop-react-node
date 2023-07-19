@@ -11,6 +11,7 @@ const passport = require('passport');
 const {
   checkAuthorizedRoles,
   checkOrderUserId,
+  checkId,
 } = require('../middlewares/auth.handler');
 const { ROLES } = require('../utils/auth/permissions-roles.utils');
 const service = new OrderedProductsService();
@@ -55,6 +56,23 @@ router.get(
     try {
       const { id } = req.params;
       const order = await service.findById(id);
+      res.json(order);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.get(
+  '/user/:id',
+  passport.authenticate('jwt', { session: false }),
+  checkAuthorizedRoles(...ROLES.registeredUser),
+  checkId(),
+  validatorHandler(getOrderedProductsSchema, 'params'),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const order = await service.getOrderByUserId(id);
       res.json(order);
     } catch (error) {
       next(error);
