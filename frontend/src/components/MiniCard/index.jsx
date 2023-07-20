@@ -19,7 +19,7 @@ function MiniCard({ title, price, imgURL, id, deleteProduct }) {
   }, [context.cartProductCount]);
 
   return (
-    <div className="flex flex-row items-center bg-white cursor-pointer w-[22rem] h-20 mb-2 border-solid rounded-md shadow-lg shadow-light_salmon">
+    <div className="flex flex-row items-center bg-white cursor-pointer w-[calc(100%-2rem)] h-20 mb-2 border-solid rounded-md shadow-lg shadow-light_salmon">
       <figure className="relative h-fit mb-0 transition delay-75 ease-in active:scale-95">
         <img
           className="h-16 object-cover rounded-sm mx-2"
@@ -27,7 +27,7 @@ function MiniCard({ title, price, imgURL, id, deleteProduct }) {
           alt={title}
         />
       </figure>
-      <div className="flex flex-col justify-between items-center p-2 w-[20rem]">
+      <div className="flex flex-col justify-between items-center p-2 ml-2 w-[20rem]">
         <p className="flex justify-between items-center w-full">
           <span className="text-sm font-bold">{title}</span>
           <XMarkIcon

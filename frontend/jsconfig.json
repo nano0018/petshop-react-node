@@ -27,14 +27,20 @@
       "@/*": [
         "src/*"
       ],
-      "@ProductDetailModal/*": [
-        "src/components/ProductDetailModal/*"
+      "@Admin/*": [
+        "src/pages/Admin/*"
       ],
-      "@ChangePasswordModal/*": [
-        "src/components/ChangePasswordModal/*"
+      "@AdminPanel/*": [
+        "src/components/AdminPanel/*"
       ],
-      "@OrderCard/*": [
-        "src/components/OrderCard/*"
+      "@Test/*": [
+        "src/pages/Test/*"
+      ],
+      "@AdminPanelLayout/*": [
+        "src/components/AdminPanelLayout/*"
+      ],
+      "@AdminPanelSidebar/*": [
+        "src/components/AdminPanelSidebar/*"
       ]
     }
   }

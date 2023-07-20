@@ -84,7 +84,7 @@ function Cart() {
       <div
         className={`${
           context.isProductCartOpened ? "flex" : "hidden"
-        } font-display justify-start items-center flex-col fixed right-0 top-12 h-auto w-96 bg-white rounded-lg py-2`}
+        } font-display justify-start items-center flex-col fixed right-0 top-12 h-auto w-80 bg-white rounded-lg py-2`}
       >
         <div className="flex flex-row justify-between items-center p-2 w-full px-6">
           <p className="text-lg font-semibold">Carrito de compras</p>
@@ -103,14 +103,14 @@ function Cart() {
             deleteProduct={deleteProduct}
           />
         ))}
-        <div className="flex flex-row items-center bg-white cursor-pointer w-[22rem] h-auto mb-2 border-solid rounded-md shadow-lg shadow-light_salmon">
+        <div className="flex flex-row items-center bg-white cursor-pointer w-[calc(100%-2rem)] h-auto mb-2 border-solid rounded-md shadow-lg shadow-light_salmon">
           <p className="flex justify-between items-center w-full px-2">
             <span className="text-lg font-medium">Total compra:</span>
             <span className="text-lg font-medium">Total: ${totalPrice}</span>
           </p>
         </div>
         <button
-          className="bg-gray text-white p-2 rounded-md w-[22rem] flex flex-row items-center justify-between transition delay-50 ease-in hover:bg-black_blue active:scale-110 shadow-lg shadow-light_salmon text-lg font-medium"
+          className="bg-gray text-white p-2 mb-2 rounded-md w-[calc(100%-2rem)] flex flex-row items-center justify-between transition delay-50 ease-in hover:bg-black_blue active:scale-110 shadow-lg shadow-light_salmon text-lg font-medium"
           onClick={() => checkoutCart(products)}
         >
           Finalizar pedido

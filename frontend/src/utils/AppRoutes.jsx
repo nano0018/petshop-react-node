@@ -11,6 +11,9 @@ import { useContext, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import { fetchData } from "./requestHandler";
 import { callLogin, callUserData } from "@hooks/useLogin";
+import AdminPanel from "@components/AdminPanel";
+import { ROLES } from "./auth/permissionsRoles";
+import Test from "@pages/Test";
 
 const AppRoutes = () => {
   const context = useContext(GlobalContext);
@@ -59,6 +62,18 @@ const AppRoutes = () => {
     {
       path: "/my-account",
       element: !context.loginRole ? <Home /> : <MyAccount />,
+    },
+    {
+      path: "/admin",
+      children: ROLES.employees.includes(context.loginRole)
+        ? [
+            {
+              index: true,
+              element: <AdminPanel />,
+            },
+            { path: "test", element: <Test /> },
+          ]
+        : [{ index: "true", element: <NotFound /> }],
     },
     { path: "/login", element: <SignIn /> },
     { path: "/sign-up", element: <CreateAccount /> },

@@ -16,7 +16,6 @@ function ChangePasswordModal() {
   const [password, setPassword] = useState("");
   const [id, setId] = useState("");
 
-
   const toggleChangePasswordModal = () => {
     context.setIsChangePasswordModalOpened(
       !context.isChangePasswordModalOpened
@@ -65,7 +64,7 @@ function ChangePasswordModal() {
   };
 
   useEffect(() => {
-    setId(callUserData().id );
+    setId(callUserData().id);
   }, [context.isChangePasswordModalOpened]);
 
   return (

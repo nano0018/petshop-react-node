@@ -25,7 +25,7 @@ function ProductDetailModal() {
         } justify-center items-center flex-col fixed top-0 right-0 h-[100vh] w-[100vw] border border-t-light_gray rounded-lg`}
         onClick={() => toggleProductDetail()}
       >
-        <aside className="flex flex-col justify-between items-center w-96 h-auto bg-white z-1 rounded-lg">
+        <aside className="flex flex-col justify-between items-center w-72 md:w-96 h-auto bg-white z-1 rounded-lg">
           <figure className="relative w-full h-fit mb-0">
             <div className="absolute top-0 right-0">
               <XMarkIcon className="h-6 w-6 text-white cursor-pointer" />
