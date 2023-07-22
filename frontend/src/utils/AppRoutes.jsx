@@ -14,6 +14,11 @@ import { callLogin, callUserData } from "@hooks/useLogin";
 import AdminPanel from "@components/AdminPanel";
 import { ROLES } from "./auth/permissionsRoles";
 import Test from "@pages/Test";
+import ManageUsers from "@pages/Admin/ManageUsers";
+import ManageProducts from "@pages/Admin/ManageProducts";
+import ManageCategories from "@pages/Admin/ManageCategories";
+import ManageCustomers from "@pages/Admin/ManageCustomers";
+import ManageOrders from "@pages/Admin/ManageOrders";
 
 const AppRoutes = () => {
   const context = useContext(GlobalContext);
@@ -71,7 +76,16 @@ const AppRoutes = () => {
               index: true,
               element: <AdminPanel />,
             },
-            { path: "test", element: <Test /> },
+            { path: "users", element: <ManageUsers /> },
+            { path: "users/:id", element: <Test /> },
+            { path: "customers", element: <ManageCustomers /> },
+            { path: "customers/:id", element: <Test /> },
+            { path: "products", element: <ManageProducts /> },
+            { path: "products/:id", element: <ManageProducts /> },
+            { path: "categories", element: <ManageCategories /> },
+            { path: "categories/:id", element: <ManageCategories /> },
+            { path: "orders", element: <ManageOrders /> },
+            { path: "orders/:id", element: <ManageOrders /> },
           ]
         : [{ index: "true", element: <NotFound /> }],
     },

@@ -1,16 +1,17 @@
-
-import AdminPanelSidebar from '@components/AdminPanelSidebar';
-import PropTypes from 'prop-types';
+import AdminPanelSidebar from "@components/AdminPanelSidebar";
+import PropTypes from "prop-types";
 function AdminPanelLayout({ children }) {
   return (
-    <div className="flex flex-row justify-start items-center w-full">
+    <>
       <AdminPanelSidebar />
-      {children}
-    </div>
+      <div className="flex flex-row justify-center items-center w-full">
+        {children}
+      </div>
+    </>
   );
 }
 
 AdminPanelLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
-export default AdminPanelLayout
+export default AdminPanelLayout;

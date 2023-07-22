@@ -14,6 +14,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [isProductCartOpened, setIsProductCartOpened] = useState(false);
   const [isChangePasswordModalOpened, setIsChangePasswordModalOpened] =
     useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   return (
     <GlobalContext.Provider
@@ -36,6 +37,8 @@ export const GlobalContextProvider = ({ children }) => {
         setProductCartData,
         isChangePasswordModalOpened,
         setIsChangePasswordModalOpened,
+        activeSection,
+        setActiveSection,
       }}
     >
       {children}
