@@ -7,7 +7,7 @@ const { config } = require('../config/envConfig');
 /**
  * Database URI from env
  */
-const DB_URL = `${config.dbURL}/${config.dbName}`;
+const DB_URL = `${config.dbURL}/${config.dbName}?retryWrites=true&w=majority`;
 
 /**
  * Database connection
