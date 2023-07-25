@@ -3,20 +3,44 @@
 # petshop-react-node :convenience_store:
 Modified petshop project from MisiónTIC 2022 - Ciclo 4
 
-## Installation
-> **Note:** The app uses React **18.0.2** with Vite.js 
+## Installation backend part
+> **Note:** The app uses Node.js **20.4.0**
 ##
-1- Install the dependencies:
+1- Go to the next folder:
+```
+cd backend
+```
+##
+2- Install the dependencies:
 ```
 npm install
 ```
-2- Run using the dev script:
+3- Run using the dev script:
 ```
 npm run dev
 ```
-3- Run using the build script:
+4- Run using the production script:
+```
+npm start
+```
+
+## Installation frontend part
+> **Note:** The app uses React **18.0.2** with Vite.js 
+##
+1- Go to the next folder:
+```
+cd frontend
+```
+##
+2- Install the dependencies:
+```
+npm install
+```
+3- Run using the dev script:
+```
+npm run dev
+```
+4- Run using the build script:
 ```
 npm run build
 ```
-## Backend documentation
-https://documenter.getpostman.com/view/22977639/2s946o39Jm
