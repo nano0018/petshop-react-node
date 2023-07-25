@@ -30,7 +30,6 @@ const PostData = async (URL, data) => {
     method: 'POST',
     url: `${URL}`,
     data: { ...data },
-    timeout: 1000,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -46,7 +45,6 @@ const PostDataToken = async (URL, data) => {
     method: 'POST',
     url: `${URL}`,
     data: { ...data },
-    timeout: 1000,
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -63,7 +61,6 @@ const PatchDataToken = async (URL, data) => {
     method: 'PATCH',
     url: `${URL}`,
     data: { ...data },
-    timeout: 1000,
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
