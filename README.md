@@ -10,7 +10,6 @@ Modified petshop project from MisiónTIC 2022 - Ciclo 4
 ```
 cd backend
 ```
-##
 2- Install the dependencies:
 ```
 npm install
@@ -23,6 +22,8 @@ npm run dev
 ```
 npm start
 ```
+### Backend documentation
+https://documenter.getpostman.com/view/22977639/2s946o39Jm
 
 ## Installation frontend part
 > **Note:** The app uses React **18.0.2** with Vite.js 
