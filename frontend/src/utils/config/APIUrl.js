@@ -1,3 +1,3 @@
 export const api = {
-  baseURL: "http://localhost:3000/api/v1"
+  baseURL: "https://petshop-backend-jmj1.onrender.com/api/v1"
 };
