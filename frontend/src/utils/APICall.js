@@ -16,7 +16,6 @@ const GetData = async (URL) => {
   return axios({
     method: 'GET',
     url: `${URL}`,
-    timeout: 1000,
     headers,
   })
     .then((response) => response)

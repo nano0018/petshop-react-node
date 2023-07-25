@@ -19,7 +19,6 @@ function SignIn() {
     localStorage.removeItem("token");
     e.preventDefault();
     const response = await login(user);
-    console.log(response);
     if (!statusCodeValidation(response)) {
       setCode(renderError(response));
       setMessage("")
